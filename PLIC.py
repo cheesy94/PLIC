@@ -6,9 +6,8 @@ Created on Wed Jan 27 01:56:13 2021
 """
 
 import numpy as np
-import matplotlib.pyplot as plt
 
-def PLIC(c,b,x,y):
+def get_interface_2D(c,b,x,y):
     Dx = np.diff(x)[0]
     Dy = np.diff(y)[0]
     
@@ -48,20 +47,3 @@ def PLIC(c,b,x,y):
             yy += y[1]
         
     return (xx,yy)
-
-# cell vof
-c = 0.7
-# normal vector
-n = (0.2, 0.4)
-
-# cell size
-xcoords = (0,1)
-ycoords = (2,3)
-
-xx,yy = PLIC(c,n,xcoords,ycoords)
-
-# TEST PLOT
-plt.figure()
-plt.plot(xx,yy)
-plt.xlim(xcoords)
-plt.ylim(ycoords)
