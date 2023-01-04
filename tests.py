@@ -46,32 +46,30 @@ c = np.array([1,1,0.18,#0,
 
 # normal vectors calculation from vof field
 nx,ny = np.gradient(-c.reshape(gridsize))
-nxr = nx.copy()
-#nxr[(0,-1),:] /= 2
-nxr = nxr.ravel()
-nyr = ny.copy()
-#nyr[:,(0,-1)] /= 2
-nyr = nyr.ravel()
+#nx[(0,-1),:] /= 2
+#ny[:,(0,-1)] /= 2
+n = np.stack((nx.ravel(),ny.ravel()), axis=1)
 
 # cell sizes
 xc = np.linspace(0,0+gridsize[0],gridsize[0]+1)
 yc = np.linspace(1,1+gridsize[1],gridsize[1]+1)
 xcoords,ycoords = np.meshgrid(xc,yc,indexing='ij')
 
-xx = np.empty_like(c,dtype=object)
-yy = np.empty_like(c,dtype=object)
+xx = np.empty((2,c.size))
+xx[:] = np.nan
+yy = np.empty((2,c.size))
+yy[:] = np.nan
 
-plt.figure()
-
-for e in range(xx.size):
+for e in range(c.size):
     if c[e]>=1 or c[e]<=0:
         continue
         
     i = int(e/gridsize[1])
     j = e%gridsize[1]
-    xx[e],yy[e] = get_interface_2D(c[e],(nxr[e],nyr[e]),xc[i:i+2],yc[j:j+2])
-    plt.plot(xx[e],yy[e],'k--')
+    xx[:,e],yy[:,e] = get_interface_2D(c[e],n[e],xc[i:i+2],yc[j:j+2])
     
+plt.figure()
+plt.plot(xx,yy,'k--')
 plt.xlim(xc.min(),xc.max())
 plt.ylim(yc.min(),yc.max())
 plt.gca().set_xticks(xc)
