@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jan 27 01:56:13 2021
-
-@author: Cheesy94
-"""
-
 import numpy as np
 
 def get_interface_2D(c,b,x,y):

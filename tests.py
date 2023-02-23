@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Dec 29 16:07:08 2022
-
-@author: carmomo4
-"""
-
 from PLIC import get_interface_2D
 import numpy as np
 import matplotlib.pyplot as plt
