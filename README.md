@@ -9,8 +9,8 @@ The method calculates the position and slope of the interface within each cell b
 </p>
 Blue line represents the real interface between gray and white fluids and red dotted line represents the linear estimation of the interface with its normal vector __n__ .
 
-
+<!--
 Example:
 
 <img src=https://user-images.githubusercontent.com/97102775/210425079-f3b72f9f-88b7-4570-a3e5-a0cbdec57018.jpg align="center" width="250" height="250"/>
-
+-->
